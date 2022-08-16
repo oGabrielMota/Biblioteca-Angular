@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LivrosComponent } from './livros/livros.component';
 import { AutoresComponent } from './autores/autores.component';
 import { CriaAutoresComponent } from './cria-autores/cria-autores.component';
+import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CriaAutoresComponent } from './cria-autores/cria-autores.component';
     HomeComponent,
     LivrosComponent,
     AutoresComponent,
-    CriaAutoresComponent
+    CriaAutoresComponent,
+    CriaLivrosComponent
   ],
   imports: [
     BrowserModule,

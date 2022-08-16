@@ -14,9 +14,7 @@
           <div class="col-lg-8 col-xl-6">
             <div class="card rounded-5">
               <div class="card-body p-3 p-md-3">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
-                  Cadastrar Autor:
-                </h3>
+                <h3 class="mb-4 pb-2 pb-md-0 px-md-2">Cadastrar Livro:</h3>
 
                 <form class="text-center">
                   <div
@@ -24,27 +22,36 @@
                   >
                     <div class="px-md-2">
                       <div class="form-outline mb-4">
-                        <label class="form-label" for="nome">Nome :</label>
+                        <label class="form-label pt-1" for="titulo"
+                          >Titulo :</label
+                        >
                         <input
                           type="text"
-                          id="nome"
-                          class="form-control"
-                          placeholder="Nome do autor"
+                          id="titulo"
+                          class="form-control mb-3"
+                          placeholder="Título do livro"
                           formControlName="senhaAtual"
                         />
-                        <label class="form-label mt-2" for="Biografia"
-                          >Biografia:</label
+                        <label class="form-label" for="anoLancamento"
+                          >Ano Lançamento :</label
                         >
-                        <textarea
-                          style="width: 350px"
-                          cols="5"
-                          rows="5"
+                        <input
+                          type="date"
+                          id="anoLancamento"
+                          class="form-control mb-3"
+                          placeholder="Ano Lançamento"
+                          formControlName="senhaAtual"
+                        />
+                        <label class="form-label" for="titulo"
+                          >ID Autor :</label
+                        >
+                        <input
                           type="text"
-                          id="Biografia"
-                          class="form-control"
-                          placeholder="Insira aqui a Biografia"
-                          formControlName="senhaNova"
-                        ></textarea>
+                          id="titulo"
+                          class="form-control mb-3"
+                          placeholder="ID do autor"
+                          formControlName="senhaAtual"
+                        />
                       </div>
                     </div>
                   </div>
