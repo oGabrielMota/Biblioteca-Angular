@@ -7,12 +7,6 @@ body{
 }
 
 
-.conteiner{
-  display: flex;
-  justify-content: center;
-  padding: 250px;
-}
-
 button{
   cursor: pointer;
   background-color: aquamarine;
@@ -25,4 +19,5 @@ button{
   width: 250px;
   height: 100px;
 }
+
 

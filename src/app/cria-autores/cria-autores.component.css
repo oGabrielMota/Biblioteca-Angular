@@ -1,13 +1,13 @@
 body{
   background-image: url(/assets/biblioteca-blur.jpg);
-  height: 100vh;
+  height: 110vh;
   background-repeat:no-repeat;
   background-size: cover;
   margin:-8px;
   overflow-x: none;
 }
 
-button{
+.cadastrar{
   cursor: pointer;
   background-color: aquamarine;
   color: black;
@@ -16,7 +16,8 @@ button{
   border: none;
   display: inline;
   margin-left: 50px;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 80px;
+  margin-left: 10px;
 }
 

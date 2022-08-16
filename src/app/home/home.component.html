@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="porra" lang="pt-BR">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,9 +7,15 @@
     <title>Home</title>
   </head>
   <body>
-    <div class="conteiner">
-      <button [routerLink]="['/livros']">LIVROS</button>
-      <button [routerLink]="['/autores']">AUTORES</button>
+    <div class="h-100">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <button class="btn btn-primary" [routerLink]="['/livros']">
+          LIVROS
+        </button>
+        <button class="btn btn-primary" [routerLink]="['/autores']">
+          AUTORES
+        </button>
+      </div>
     </div>
   </body>
 </html>
