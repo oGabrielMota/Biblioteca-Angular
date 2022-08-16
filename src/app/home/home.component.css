@@ -1,0 +1,28 @@
+body{
+  background-image: url(/assets/biblioteca-blur.jpg);
+  height: 100vh;
+  background-repeat:no-repeat;
+  background-size: cover;
+  margin:-8px;
+}
+
+
+.conteiner{
+  display: flex;
+  justify-content: center;
+  padding: 250px;
+}
+
+button{
+  cursor: pointer;
+  background-color: aquamarine;
+  color: black;
+  font-size: 25px;
+  border-radius: 15px;
+  border: none;
+  display: inline;
+  margin-left: 50px;
+  width: 250px;
+  height: 100px;
+}
+
