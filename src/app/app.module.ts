@@ -8,6 +8,8 @@ import { LivrosComponent } from './livros/livros.component';
 import { AutoresComponent } from './autores/autores.component';
 import { CriaAutoresComponent } from './cria-autores/cria-autores.component';
 import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
     LivrosComponent,
     AutoresComponent,
     CriaAutoresComponent,
-    CriaLivrosComponent
+    CriaLivrosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

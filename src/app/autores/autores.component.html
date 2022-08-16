@@ -17,12 +17,48 @@
                   <td><h1>AUTORES</h1></td>
                   <td>
                     <button class="btn btn-primary">
+                      <i class="fa fa-plus icone" aria-hidden="true"></i>
                       <a [routerLink]="['/cria-autores']" class="p-2"></a>
-                      <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
               </table>
+              <div *ngIf="autores" class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr class="text-center">
+                      <th>Autor</th>
+                      <th>Biografia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let autor of autores">
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-link"
+                          data-toggle="modal"
+                          data-target="#alteraTarefa"
+                        >
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        {{ autor.nome }}
+                        <!-- <a
+                          class="btn btn-link"
+                          data-toggle="modal"
+                          data-target="#criarHorario"
+                          (click)="abreModalParaCadastrarHorario(tarefa.id, tarefa.nome)"
+                          *ngIf="user.permissions.includes('TASKS_SCHEDULES_CREATE')"
+                        >
+                          <i class="fa fa-plus ml-5" aria-hidden="true"></i>
+                        </a> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

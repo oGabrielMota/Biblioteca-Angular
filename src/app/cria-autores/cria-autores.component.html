@@ -18,7 +18,7 @@
                   Cadastrar Autor:
                 </h3>
 
-                <form class="text-center">
+                <form class="text-center" [formGroup]="autoresForm">
                   <div
                     class="row d-flex justify-content-center align-items-center h-100"
                   >
@@ -26,11 +26,12 @@
                       <div class="form-outline mb-4">
                         <label class="form-label" for="nome">Nome :</label>
                         <input
+                          name="nome"
+                          formControlName="nome"
                           type="text"
-                          id="nome"
                           class="form-control"
                           placeholder="Nome do autor"
-                          formControlName="senhaAtual"
+                          autofocus
                         />
                         <label class="form-label mt-2" for="Biografia"
                           >Biografia:</label
@@ -43,7 +44,7 @@
                           id="Biografia"
                           class="form-control"
                           placeholder="Insira aqui a Biografia"
-                          formControlName="senhaNova"
+                          formControlName="biografia"
                         ></textarea>
                       </div>
                     </div>
@@ -53,6 +54,7 @@
                     <button
                       type="submit"
                       class="btn btn-success btn-lg mb-1 cadastrar"
+                      (click)="cadastraAutor()"
                     >
                       <span>Cadastrar</span>
                     </button>
