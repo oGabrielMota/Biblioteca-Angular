@@ -71,7 +71,17 @@
                             )
                           "
                         >
-                          <i class="fa fa-solid fa-pencil icones"></i>
+                          <i
+                            class="fa fa-solid fa-pencil fa-lg text-primary"
+                          ></i>
+                        </a>
+                        <a
+                          class="btn btn-link"
+                          data-toggle="modal"
+                          data-target="#removerLivro"
+                          (click)="modalRemoveLivro(livro.id, livro.titulo)"
+                        >
+                          <i class="fa fa-solid fa-trash fa-lg text-danger"></i>
                         </a>
                       </td>
                     </tr>
@@ -99,7 +109,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Alterar de Tarefa</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Alterar Livro</h4>
         <button
           type="button"
           class="close"
@@ -156,6 +166,45 @@
           type="submit"
         >
           Alterar Livro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Remoção Tarefa  -->
+
+<div class="modal" tabindex="-1" id="removerLivro">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remover Livro</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          id="botaoFecharRemoveLivro"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Deseja excluir o livro: <strong>{{ nomeLivro }}</strong>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          (click)="excluir()"
+          type="button"
+          class="btn btn-danger"
+          id="botaoRemoverLivro"
+        >
+          Excluir
         </button>
       </div>
     </div>

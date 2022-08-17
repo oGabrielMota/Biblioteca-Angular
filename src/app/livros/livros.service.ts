@@ -24,4 +24,8 @@ export class LivrosService {
   alterar(id: number, user: LivrosOutput): Observable<LivrosOutput> {
     return this.http.put<LivrosOutput>(URL + '/' + id, user);
   }
+
+  excluir(id: any): Observable<void> {
+    return this.http.delete<void>(URL + '/' + id);
+  }
 }

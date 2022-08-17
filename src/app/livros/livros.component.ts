@@ -7,7 +7,8 @@ import { AutoresOutput } from '../outputs/autores-output';
 import { LivrosOutput } from '../outputs/livros-output';
 import { LivrosService } from './livros.service';
 
-declare function closeModal(id: string): any;
+declare function fechaModal(id: string): any;
+declare function abreModal(id: string): any;
 
 @Component({
   selector: 'app-livros',
@@ -23,6 +24,7 @@ export class LivrosComponent implements OnInit {
 
   livroAlterar: number = -1;
   autoresId: number = -1;
+  nomeLivro: string = '';
 
   constructor(
     private livrosService: LivrosService,
@@ -78,10 +80,33 @@ export class LivrosComponent implements OnInit {
       this.livrosService.alterar(this.livroAlterar, mudaLivro).subscribe({
         next: (data) => {
           this.buscaLivros();
-          closeModal('fechaModalAlteracao');
+          fechaModal('fechaModalAlteracao');
         },
         error: (erro) => {},
       });
     }
+  }
+
+  modalRemoveLivro(id: number, nome: string) {
+    this.nomeLivro = nome;
+    document
+      .getElementById('botaoRemoverLivro')
+      ?.setAttribute('data-id', id.toString());
+    abreModal('removerLivro');
+  }
+
+  excluir() {
+    const id = document
+      .getElementById('botaoRemoverLivro')
+      ?.getAttribute('data-id');
+    this.livrosService.excluir(id).subscribe({
+      next: (data) => {
+        this.buscaLivros();
+        fechaModal('botaoFecharRemoveLivro');
+      },
+      error: (erro) => {
+        fechaModal('botaoFecharRemoveLivro');
+      },
+    });
   }
 }
