@@ -1,7 +1,7 @@
 import { AutoresOutput } from './autores-output';
 
 export interface LivrosOutput {
-  id: string;
+  id: number;
   titulo: string;
   anoLancamento: string;
   autoresIds: AutoresOutput[];

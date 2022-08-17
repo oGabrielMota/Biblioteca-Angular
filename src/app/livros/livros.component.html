@@ -35,6 +35,7 @@
                       <th>Titulo</th>
                       <th>Ano Lançamento</th>
                       <th>Autores</th>
+                      <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,11 +50,30 @@
                       >
                         {{ livro.anoLancamento }}
                       </td>
-                      <div *ngFor="let autor of livro.autoresIds">
-                        <td class="text-center align-middle">
-                          {{ autor.nome }}
-                        </td>
-                      </div>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        {{ livro.autoresIds }}
+                      </td>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        <a
+                          class="btn btn-link"
+                          data-toggle="modal"
+                          data-target="#alteraLivro"
+                          (click)="
+                            marcaAlterar(
+                              livro.id,
+                              livro.titulo,
+                              livro.anoLancamento,
+                              autoresId
+                            )
+                          "
+                        >
+                          <i class="fa fa-solid fa-pencil icones"></i>
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -65,3 +85,79 @@
     </section>
   </body>
 </html>
+
+<!-- Modal Alteração -->
+
+<div
+  class="modal fade"
+  id="alteraLivro"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Alterar de Tarefa</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form [formGroup]="marcaLivroAlterarForm">
+          <div class="md-form mt-5 mb-5">
+            <label for="titulo">Titulo:</label>
+            <input
+              id="titulo"
+              formControlName="titulo"
+              type="text"
+              class="form-control"
+              placeholder="Titulo"
+              autofocus
+            />
+            <label class="mt-2" for="anoLancamento">Ano lançamento:</label>
+            <input
+              id="anoLancamento"
+              formControlName="anoLancamento"
+              type="text"
+              class="form-control"
+              placeholder="Ano Lançamento"
+            />
+            <label class="mt-2" for="autoresIds">ID dos Autores:</label>
+            <input
+              id="autoresIds"
+              formControlName="autoresIds"
+              type="text"
+              class="form-control"
+              placeholder="Id do Autor"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="fechaModalAlteracao"
+          data-dismiss="modal"
+        >
+          Fechar
+        </button>
+        <button
+          (click)="alterar()"
+          type="button"
+          class="btn btn-success"
+          type="submit"
+        >
+          Alterar Livro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

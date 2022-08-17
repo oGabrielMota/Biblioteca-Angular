@@ -20,4 +20,8 @@ export class LivrosService {
   cadastraLivro(user: LivrosInput): Observable<LivrosOutput> {
     return this.http.post<LivrosOutput>(URL, user);
   }
+
+  alterar(id: number, user: LivrosOutput): Observable<LivrosOutput> {
+    return this.http.put<LivrosOutput>(URL + '/' + id, user);
+  }
 }
