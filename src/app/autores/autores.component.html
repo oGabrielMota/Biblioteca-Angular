@@ -7,8 +7,11 @@
     <title>Autores</title>
   </head>
   <body>
+    <button [routerLink]="['']" class="btn m-5 voltar">
+      <i class="fa fa-solid fa-angle-left mr-1"></i>
+    </button>
     <section class="h-100 h-custom">
-      <div class="container py-5 h-100">
+      <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-8 col-xl-6">
             <div class="card rounded-3">
@@ -18,9 +21,9 @@
                   <td>
                     <button
                       [routerLink]="['/cria-autores']"
-                      class="btn btn-primary"
+                      class="btn btn-primary add"
                     >
-                      <i class="fa fa-plus icone" aria-hidden="true"></i>
+                      <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>

@@ -7,7 +7,7 @@ body{
   overflow-x: none;
 }
 
-button{
+.add{
   cursor: pointer;
   background-color: aquamarine;
   color: black;
@@ -18,6 +18,17 @@ button{
   margin-left: 33px;
   padding-bottom: 40px;
   padding-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.voltar{
+  cursor: pointer;
+  background-color: aquamarine;
+  color: black;
+  font-size: 25px;
+  border-radius: 50%;
+  border: none;
   width: 50px;
   height: 50px;
 }
