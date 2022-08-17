@@ -1,12 +1,12 @@
 import { AutoresInput } from './../inputs/autores-input';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AutoresOutput } from '../outputs/autores-output';
 import { AutoresService } from './autores.service';
 import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-declare function closeModal(id: string): any;
+declare function fechaModal(id: string): any;
 declare function openModal(id: string): any;
 
 @Component({
@@ -21,6 +21,10 @@ export class AutoresComponent implements OnInit {
   idAutorAlterar: number = -1;
 
   marcaAutorAlterarForm!: FormGroup;
+
+  @Input() erro: any = '';
+  sucesso: boolean = false;
+  botaoAtivo: boolean = true;
 
   constructor(
     private autoresService: AutoresService,
@@ -89,9 +93,14 @@ export class AutoresComponent implements OnInit {
       this.autoresService.alterar(this.idAutorAlterar, mudaAutor).subscribe({
         next: (data) => {
           this.buscaTodos();
-          closeModal('fechaModalAlteracao');
+          fechaModal('fechaModalAlteracao');
+          this.sucesso = true;
+          this.botaoAtivo = true;
         },
-        error: (erro) => {},
+        error: (err) => {
+          this.erro = err;
+          this.botaoAtivo = true;
+        },
       });
     }
   }

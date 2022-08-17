@@ -62,6 +62,18 @@
                       <span>Cadastrar</span>
                     </button>
                   </div>
+                  <validacao-erro
+                    *ngIf="sucesso && botaoAtivo == true"
+                    type="success"
+                    [top]="true"
+                    >Autor cadastrado com sucesso</validacao-erro
+                  >
+                  <validacao-erro
+                    *ngIf="erro && botaoAtivo == true"
+                    type="danger"
+                    [top]="true"
+                    >Ocorreu um erro ao cadastrar o o autor</validacao-erro
+                  >
                 </form>
               </div>
             </div>

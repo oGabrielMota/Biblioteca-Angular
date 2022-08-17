@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LivrosInput } from '../inputs/livros-input';
@@ -14,8 +14,13 @@ import { LivrosOutput } from '../outputs/livros-output';
 export class CriaLivrosComponent implements OnInit {
   livro!: LivrosOutput[];
   autor!: AutoresOutput[];
+
   livrosForm!: FormGroup;
   idAutoresForm!: FormGroup;
+
+  livroCadastradoComSucesso: boolean = false;
+
+  erroCadastrarLivro: boolean = false;
 
   constructor(
     private livroService: LivrosService,
@@ -44,13 +49,15 @@ export class CriaLivrosComponent implements OnInit {
   }
 
   cadastraLivro() {
+    this.livroCadastradoComSucesso = false;
+    this.erroCadastrarLivro = false;
     const user = this.livrosForm.getRawValue() as LivrosInput;
     this.livroService.cadastraLivro(user).subscribe({
       next: (success) => {
-        console.log('Deu baum');
+        this.livroCadastradoComSucesso = true;
       },
       error: (err) => {
-        console.log('Fudeu');
+        this.erroCadastrarLivro = true;
       },
     });
   }

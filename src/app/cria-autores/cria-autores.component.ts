@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AutoresService } from '../autores/autores.service';
 import { AutoresInput } from '../inputs/autores-input';
 import { AutoresOutput } from '../outputs/autores-output';
+import { environment } from 'src/environments/environment';
 
-declare function closeModal(id: string): any;
+declare function fechaModal(id: string): any;
+
+const URL = environment.URL_API + 'livros';
 
 @Component({
   selector: 'app-cria-autores',
@@ -15,6 +18,10 @@ declare function closeModal(id: string): any;
 export class CriaAutoresComponent implements OnInit {
   autoresForm!: FormGroup;
   autor!: AutoresOutput[];
+
+  @Input() erro: any = '';
+  sucesso: boolean = false;
+  botaoAtivo: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,10 +63,12 @@ export class CriaAutoresComponent implements OnInit {
     this.autoresService.cadastraAutor(user).subscribe({
       next: (success) => {
         console.log('Deu baum');
-        closeModal('fechaModalAlteracao');
+        this.sucesso = true;
+        this.botaoAtivo = true;
       },
       error: (err) => {
-        console.log('Fudeu');
+        this.erro = err;
+        this.botaoAtivo = true;
       },
     });
   }

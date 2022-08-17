@@ -10,6 +10,7 @@ import { CriaAutoresComponent } from './cria-autores/cria-autores.component';
 import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AutoresComponent,
     CriaAutoresComponent,
     CriaLivrosComponent,
+    ValidacaoErroComponent,
   ],
   imports: [
     BrowserModule,

@@ -60,12 +60,26 @@
                             marcaAlterar(autor.id, autor.nome, autor.biografia)
                           "
                         >
-                          <i class="fa fa-solid fa-pencil icones"></i>
+                          <i
+                            class="fa fa-solid fa-pencil fa-lg text-primary"
+                          ></i>
                         </a>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+                <validacao-erro
+                  *ngIf="sucesso && botaoAtivo == true"
+                  type="success"
+                  [top]="true"
+                  >Autor alterado com sucesso</validacao-erro
+                >
+                <validacao-erro
+                  *ngIf="erro && botaoAtivo == true"
+                  type="danger"
+                  [top]="true"
+                  >Ocorreu um erro ao alterar o o autor</validacao-erro
+                >
               </div>
             </div>
           </div>

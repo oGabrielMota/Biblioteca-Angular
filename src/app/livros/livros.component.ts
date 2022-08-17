@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -26,6 +26,12 @@ export class LivrosComponent implements OnInit {
   autoresId: number = -1;
   nomeLivro: string = '';
 
+  livroExcluidaComSucesso: boolean = false;
+  livroAlteradoComSucesso: boolean = false;
+
+  erroExcluirLivro: boolean = false;
+  erroAlterarLivro: boolean = false;
+
   constructor(
     private livrosService: LivrosService,
     private activatedRoute: ActivatedRoute,
@@ -52,6 +58,16 @@ export class LivrosComponent implements OnInit {
     });
   }
 
+  resetaMensagensSucesso() {
+    this.livroAlteradoComSucesso = false;
+    this.livroAlteradoComSucesso = false;
+  }
+
+  resetaMensagensErro() {
+    this.erroAlterarLivro = false;
+    this.erroExcluirLivro = false;
+  }
+
   buscaLivros(): void {
     this.livrosService
       .buscaLivros(this.activatedRoute.snapshot.params?.[1])
@@ -74,20 +90,27 @@ export class LivrosComponent implements OnInit {
   }
 
   alterar() {
+    this.resetaMensagensErro();
+    this.resetaMensagensSucesso();
     if (this.marcaLivroAlterarForm) {
       let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosInput;
 
       this.livrosService.alterar(this.livroAlterar, mudaLivro).subscribe({
         next: (data) => {
+          this.livroAlteradoComSucesso = true;
           this.buscaLivros();
           fechaModal('fechaModalAlteracao');
         },
-        error: (erro) => {},
+        error: (err) => {
+          this.erroAlterarLivro = true;
+        },
       });
     }
   }
 
   modalRemoveLivro(id: number, nome: string) {
+    this.resetaMensagensErro();
+    this.resetaMensagensSucesso();
     this.nomeLivro = nome;
     document
       .getElementById('botaoRemoverLivro')
@@ -96,16 +119,20 @@ export class LivrosComponent implements OnInit {
   }
 
   excluir() {
+    this.resetaMensagensErro();
+    this.resetaMensagensSucesso();
     const id = document
       .getElementById('botaoRemoverLivro')
       ?.getAttribute('data-id');
     this.livrosService.excluir(id).subscribe({
       next: (data) => {
         this.buscaLivros();
+        this.livroExcluidaComSucesso = true;
         fechaModal('botaoFecharRemoveLivro');
       },
-      error: (erro) => {
+      error: (err) => {
         fechaModal('botaoFecharRemoveLivro');
+        this.erroExcluirLivro;
       },
     });
   }

@@ -74,6 +74,18 @@
                     </button>
                   </div>
                 </form>
+                <validacao-erro
+                  *ngIf="livroCadastradoComSucesso"
+                  type="success"
+                  [top]="true"
+                  >Livro Cadastrado com sucesso ></validacao-erro
+                >
+                <validacao-erro
+                  *ngIf="erroCadastrarLivro"
+                  type="danger"
+                  [top]="true"
+                  >Ocorreu um erro ao cadastrar o livro</validacao-erro
+                >
               </div>
             </div>
           </div>
