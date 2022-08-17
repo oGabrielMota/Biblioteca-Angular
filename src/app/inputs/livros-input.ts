@@ -1,6 +1,6 @@
-import { AutoresOutput } from './autores-output';
+import { AutoresOutput } from '../outputs/autores-output';
 
-export interface LivrosOutput {
+export interface LivrosInput {
   id: string;
   titulo: string;
   anoLancamento: string;

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LivrosOutput } from '../outputs/livros-output';
 import { Observable } from 'rxjs';
+import { LivrosInput } from '../inputs/livros-input';
 
 const URL = environment.URL_API + 'livros';
 
@@ -14,5 +15,9 @@ export class LivrosService {
 
   buscaLivros(user: LivrosOutput): Observable<LivrosOutput[]> {
     return this.http.get<LivrosOutput[]>(URL);
+  }
+
+  cadastraLivro(user: LivrosInput): Observable<LivrosOutput> {
+    return this.http.post<LivrosOutput>(URL, user);
   }
 }

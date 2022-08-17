@@ -44,11 +44,11 @@
                       >
                         {{ livro.anoLancamento }}
                       </td>
-                      <td
-                        class="text-center align-middle border border-primary"
-                      >
-                        {{ livro.idAutor }}
-                      </td>
+                      <div *ngFor="let autor of livro.autoresIds">
+                        <td class="text-center align-middle">
+                          {{ autor.nome }}
+                        </td>
+                      </div>
                     </tr>
                   </tbody>
                 </table>
