@@ -1,10 +1,10 @@
 body{
   background-image: url(/assets/biblioteca-blur.jpg);
-  height: 110vh;
+  height: 100vh;
+  width: 100vw;
   background-repeat:no-repeat;
   background-size: cover;
-  margin:-8px;
-  overflow-x: none;
+  margin: 0%;
 }
 
 .cadastrar{

@@ -1,9 +1,10 @@
 body{
   background-image: url(/assets/biblioteca-blur.jpg);
   height: 100vh;
+  width: 100vw;
   background-repeat:no-repeat;
   background-size: cover;
-  margin:-8px;
+  margin: 0%;
 }
 
 
