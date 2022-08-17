@@ -14,7 +14,7 @@ export class AutoresService {
   constructor(private http: HttpClient) {}
 
   buscaTodos(user: AutoresOutput): Observable<AutoresOutput[]> {
-    return this.http.get<AutoresOutput[]>(URL + user);
+    return this.http.get<AutoresOutput[]>(URL);
   }
 
   cadastraAutor(user: AutoresInput): Observable<AutoresOutput> {

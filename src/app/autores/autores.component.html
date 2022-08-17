@@ -23,7 +23,7 @@
                   </td>
                 </tr>
               </table>
-              <div *ngIf="autores" class="table-responsive">
+              <div *ngIf="autoresForm" class="table-responsive">
                 <table class="table">
                   <thead>
                     <tr class="text-center">
@@ -36,24 +36,12 @@
                       <td
                         class="text-center align-middle border border-primary"
                       >
-                        <button
-                          type="button"
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#alteraTarefa"
-                        >
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
                         {{ autor.nome }}
-                        <!-- <a
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#criarHorario"
-                          (click)="abreModalParaCadastrarHorario(tarefa.id, tarefa.nome)"
-                          *ngIf="user.permissions.includes('TASKS_SCHEDULES_CREATE')"
-                        >
-                          <i class="fa fa-plus ml-5" aria-hidden="true"></i>
-                        </a> -->
+                      </td>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        {{ autor.biografia }}
                       </td>
                     </tr>
                   </tbody>

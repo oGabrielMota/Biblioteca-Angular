@@ -23,6 +23,36 @@
                   </td>
                 </tr>
               </table>
+              <div *ngIf="livroForm" class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr class="text-center">
+                      <th>Titulo</th>
+                      <th>Ano Lançamento</th>
+                      <th>Autores</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let livro of livros">
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        {{ livro.titulo }}
+                      </td>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        {{ livro.anoLancamento }}
+                      </td>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        {{ livro.idAutor }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
