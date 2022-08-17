@@ -5,6 +5,8 @@ import { AutoresService } from '../autores/autores.service';
 import { AutoresInput } from '../inputs/autores-input';
 import { AutoresOutput } from '../outputs/autores-output';
 
+declare function closeModal(id: string): any;
+
 @Component({
   selector: 'app-cria-autores',
   templateUrl: './cria-autores.component.html',
@@ -54,6 +56,7 @@ export class CriaAutoresComponent implements OnInit {
     this.autoresService.cadastraAutor(user).subscribe({
       next: (success) => {
         console.log('Deu baum');
+        closeModal('fechaModalAlteracao');
       },
       error: (err) => {
         console.log('Fudeu');

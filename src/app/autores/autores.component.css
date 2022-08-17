@@ -6,6 +6,7 @@ body{
   background-size: cover;
   margin: 0%;
 }
+
 .add{
   cursor: pointer;
   background-color: aquamarine;
@@ -30,6 +31,19 @@ body{
   border: none;
   width: 50px;
   height: 50px;
+}
+
+.icones{
+  cursor: pointer;
+  background-color: aquamarine;
+  color: black;
+  font-size: 25px;
+  border-radius: 50%;
+  border: none;
+  padding-top: 7px;
+  border: none;
+  width: 40px;
+  height: 40px;
 }
 
 

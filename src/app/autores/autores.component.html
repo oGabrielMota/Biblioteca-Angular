@@ -34,6 +34,7 @@
                     <tr class="text-center">
                       <th>Autor</th>
                       <th>Biografia</th>
+                      <th>AÇÕES</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -48,6 +49,20 @@
                       >
                         {{ autor.biografia }}
                       </td>
+                      <td
+                        class="text-center align-middle border border-primary"
+                      >
+                        <a
+                          class="btn btn-link"
+                          data-toggle="modal"
+                          data-target="#alteraAutor"
+                          (click)="
+                            marcaAlterar(autor.id, autor.nome, autor.biografia)
+                          "
+                        >
+                          <i class="fa fa-solid fa-pencil icones"></i>
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -59,3 +74,71 @@
     </section>
   </body>
 </html>
+
+<!-- Modal Alteração -->
+
+<div
+  class="modal fade"
+  id="alteraAutor"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Alterar de Tarefa</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form [formGroup]="marcaAutorAlterarForm">
+          <div class="md-form mt-5 mb-5">
+            <label for="nome">Nome do Autor</label>
+            <input
+              id="nome"
+              formControlName="nome"
+              type="text"
+              class="form-control"
+              placeholder="Nome"
+              autofocus
+            />
+            <label class="mt-2" for="biografia">Biografia</label>
+            <input
+              id="biografia"
+              formControlName="biografia"
+              type="text"
+              class="form-control"
+              placeholder="Biografia"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="fechaModalAlteracao"
+          data-dismiss="modal"
+        >
+          Fechar
+        </button>
+        <button
+          (click)="alterar()"
+          type="button"
+          class="btn btn-success"
+          type="submit"
+        >
+          Alterar Autor
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

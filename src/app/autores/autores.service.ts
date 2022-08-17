@@ -20,4 +20,8 @@ export class AutoresService {
   cadastraAutor(user: AutoresInput): Observable<AutoresOutput> {
     return this.http.post<AutoresOutput>(URL, user);
   }
+
+  alterar(id: number, user: AutoresOutput): Observable<AutoresOutput> {
+    return this.http.put<AutoresOutput>(URL + '/' + id, user);
+  }
 }
