@@ -38,6 +38,21 @@
                           placeholder="Título do livro"
                           formControlName="titulo"
                         />
+                        <msg-validacao
+                          *ngIf="livrosForm.get('titulo')?.errors?.['maxLength']"
+                        >
+                          Titulo deve ter no maximo 200 caracteres!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="livrosForm.get('titulo')?.errors?.['required']"
+                        >
+                          Titulo é obrigatorio!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="livrosForm.get('titulo')?.errors?.['minLength']"
+                        >
+                          Titulo deve ter no minimo 1 caracteres!
+                        </msg-validacao>
                         <label class="form-label" for="anoLancamento"
                           >Ano Lançamento :</label
                         >
@@ -48,6 +63,22 @@
                           placeholder="Ano Lançamento"
                           formControlName="anoLancamento"
                         />
+                        <msg-validacao
+                          *ngIf="livrosForm.get('anoLancamento')?.errors?.['minLength']"
+                        >
+                          O ano deve deve ter 4 caracteres!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="livrosForm.get('anoLancamento')?.errors?.['maxLength']"
+                        >
+                          O ano deve deve ter 4 caracteres!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="livrosForm.get('titulo')?.errors?.['required']"
+                        >
+                          Ano lançamento é obrigatorio!
+                        </msg-validacao>
+
                         <div>
                           <label class="form-label" for="idAutor"
                             >Id Autor:</label

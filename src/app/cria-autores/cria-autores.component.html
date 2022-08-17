@@ -36,6 +36,21 @@
                           placeholder="Nome do autor"
                           autofocus
                         />
+                        <msg-validacao
+                          *ngIf="autoresForm.get('nome')?.errors?.['required']"
+                        >
+                          O nome é obrigatorio!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="autoresForm.get('nome')?.errors?.['minength']"
+                        >
+                          O nome devera ter no minimo 1 caracteres
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="autoresForm.get('nome')?.errors?.['maxLength']"
+                        >
+                          O nome devera ter no maximo 100 caracteres
+                        </msg-validacao>
                         <label class="form-label mt-2" for="Biografia"
                           >Biografia:</label
                         >
@@ -49,6 +64,21 @@
                           placeholder="Insira aqui a Biografia"
                           formControlName="biografia"
                         ></textarea>
+                        <msg-validacao
+                          *ngIf="autoresForm.get('biografia')?.errors?.['required']"
+                        >
+                          A biografia é obrigatoria!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="autoresForm.get('biografia')?.errors?.['minength']"
+                        >
+                          A biografia devera ter no minimo 1 caracteres!
+                        </msg-validacao>
+                        <msg-validacao
+                          *ngIf="autoresForm.get('biografia')?.errors?.['maxLength']"
+                        >
+                          A biografia devera ter no maximo 1000 caracteres!
+                        </msg-validacao>
                       </div>
                     </div>
                   </div>

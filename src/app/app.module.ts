@@ -11,6 +11,7 @@ import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.component';
+import { MsgValidacaoComponent } from './msg-validacao/msg-validacao/msg-validacao.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.componen
     CriaAutoresComponent,
     CriaLivrosComponent,
     ValidacaoErroComponent,
+    MsgValidacaoComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,14 @@ export class CriaLivrosComponent implements OnInit {
   ngOnInit(): void {
     this.buscaLivros();
     this.livrosForm = this.formBuilder.group({
-      titulo: ['', [Validators.required]],
+      titulo: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(200),
+        ],
+      ],
       anoLancamento: [
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(4)],

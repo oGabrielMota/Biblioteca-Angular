@@ -35,7 +35,7 @@ export class CriaAutoresComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(1),
+          Validators.minLength(2),
           Validators.maxLength(100),
         ],
       ],
