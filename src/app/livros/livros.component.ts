@@ -26,11 +26,13 @@ export class LivrosComponent implements OnInit {
   autoresId: number = -1;
   nomeLivro: string = '';
 
+  livroCadastradoComSucesso: boolean = false;
   livroExcluidaComSucesso: boolean = false;
   livroAlteradoComSucesso: boolean = false;
 
   nenhumLivro: boolean = false;
 
+  erroCadastrarLivro: boolean = false;
   erroExcluirLivro: boolean = false;
   erroAlterarLivro: boolean = false;
 
@@ -77,6 +79,20 @@ export class LivrosComponent implements OnInit {
         this.livros = success;
         console.log(this.livros);
       });
+  }
+
+  cadastraLivro() {
+    this.livroCadastradoComSucesso = false;
+    this.erroCadastrarLivro = false;
+    const user = this.livroForm.getRawValue() as LivrosInput;
+    this.livrosService.cadastraLivro(user).subscribe({
+      next: (success) => {
+        this.livroCadastradoComSucesso = true;
+      },
+      error: (err) => {
+        this.erroCadastrarLivro = true;
+      },
+    });
   }
 
   marcaAlterar(

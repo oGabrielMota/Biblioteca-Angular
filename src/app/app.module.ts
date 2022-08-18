@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LivrosComponent } from './livros/livros.component';
 import { AutoresComponent } from './autores/autores.component';
-import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MsgValidacaoComponent } from './msg-validacao/msg-validacao/msg-validacao.component';
@@ -18,7 +17,6 @@ import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.componen
     HomeComponent,
     LivrosComponent,
     AutoresComponent,
-    CriaLivrosComponent,
     MsgValidacaoComponent,
     ValidacaoErroComponent,
   ],

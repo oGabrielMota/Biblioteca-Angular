@@ -20,7 +20,8 @@
                   <td><h1>LIVROS</h1></td>
                   <td>
                     <button
-                      [routerLink]="['/cria-livros']"
+                      data-toggle="modal"
+                      data-target="#criaLivro"
                       class="btn btn-primary botao"
                     >
                       <i class="fa fa-plus" aria-hidden="true"></i>
@@ -196,7 +197,86 @@
   </div>
 </div>
 
-<!-- Modal Remoção Tarefa  -->
+<!-- Modal Criação -->
+
+<div
+  class="modal fade"
+  id="criaLivro"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Cadastrar Livro</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <form [formGroup]="livroForm">
+          <div class="md-form mt-5 mb-5">
+            <label for="titulo">Titulo:</label>
+            <input
+              id="titulo"
+              formControlName="titulo"
+              type="text"
+              class="form-control"
+              placeholder="Titulo"
+              autofocus
+            />
+            <label class="mt-2" for="anoLancamento">Ano lançamento:</label>
+            <input
+              id="anoLancamento"
+              formControlName="anoLancamento"
+              type="text"
+              class="form-control"
+              placeholder="Ano Lançamento"
+            />
+            <label class="mt-2" for="autoresIds">ID dos Autores:</label>
+            <input
+              id="autoresIds"
+              formControlName="autoresIds"
+              type="text"
+              class="form-control"
+              placeholder="Id do Autor"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="fechaModalCriacao"
+          data-dismiss="modal"
+        >
+          Fechar
+        </button>
+        <button
+          (click)="cadastraLivro()"
+          type="button"
+          class="btn btn-success"
+          type="submit"
+        >
+          Cadastrar Livro
+        </button>
+      </div>
+      <validacao-erro *ngIf="erroCadastrarLivro" type="danger" [top]="true"
+        >Ocorreu um erro ao cadastrar o livro</validacao-erro
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Modal Remoção Livro  -->
 
 <div class="modal" tabindex="-1" id="removerLivro">
   <div class="modal-dialog">

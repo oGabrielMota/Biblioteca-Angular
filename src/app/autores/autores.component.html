@@ -89,19 +89,6 @@
                   [top]="true"
                   >Autor criado com sucesso</validacao-erro
                 >
-
-                <validacao-erro
-                  *ngIf="erroCadastrarAutor"
-                  type="danger"
-                  [top]="true"
-                  >Ocorreu um erro ao alterar o o autor</validacao-erro
-                >
-                <validacao-erro
-                  *ngIf="erroCadastrarAutor"
-                  type="danger"
-                  [top]="true"
-                  >Ocorreu um erro ao criar o autor</validacao-erro
-                >
               </div>
             </div>
           </div>
@@ -175,6 +162,9 @@
           Alterar Autor
         </button>
       </div>
+      <validacao-erro *ngIf="erroCadastrarAutor" type="danger" [top]="true"
+        >Ocorreu um erro ao alterar o o autor</validacao-erro
+      >
     </div>
   </div>
 </div>
@@ -243,6 +233,9 @@
           Cadastrar Autor
         </button>
       </div>
+      <validacao-erro *ngIf="erroCadastrarAutor" type="danger" [top]="true"
+        >Ocorreu um erro ao criar o autor</validacao-erro
+      >
     </div>
   </div>
 </div>
