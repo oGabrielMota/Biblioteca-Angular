@@ -232,6 +232,22 @@
               placeholder="Titulo"
               autofocus
             />
+            <msg-validacao
+              *ngIf="livroForm.get('titulo')?.errors?.['required']"
+            >
+              Titulo é obrigatorio!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="livroForm.get('titulo')?.errors?.['minLength']"
+            >
+              O titulo deve ter no minimo 1 caracter!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="livroForm.get('titulo')?.errors?.['maxLength']"
+            >
+              O titulo deve deve ter no maximo 200 caracteres!
+            </msg-validacao>
+
             <label class="mt-2" for="anoLancamento">Ano lançamento:</label>
             <input
               id="anoLancamento"
@@ -240,6 +256,22 @@
               class="form-control"
               placeholder="Ano Lançamento"
             />
+            <msg-validacao
+              *ngIf="livroForm.get('anoLancamento')?.errors?.['minLength']"
+            >
+              O ano deve deve ter 4 caracteres!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="livroForm.get('anoLancamento')?.errors?.['maxLength']"
+            >
+              O ano deve deve ter 4 caracteres!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="livroForm.get('anoLancamento')?.errors?.['required']"
+            >
+              Ano lançamento é obrigatorio!
+            </msg-validacao>
+
             <label class="mt-2" for="autoresIds">ID dos Autores:</label>
             <input
               id="autoresIds"
@@ -248,6 +280,11 @@
               class="form-control"
               placeholder="Id do Autor"
             />
+            <msg-validacao
+              *ngIf="livroForm.get('autoresIds')?.errors?.['required']"
+            >
+              ID do autor é obrigatorio!
+            </msg-validacao>
           </div>
         </form>
       </div>
