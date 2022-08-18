@@ -29,6 +29,8 @@ export class LivrosComponent implements OnInit {
   livroExcluidaComSucesso: boolean = false;
   livroAlteradoComSucesso: boolean = false;
 
+  nenhumLivro: boolean = false;
+
   erroExcluirLivro: boolean = false;
   erroAlterarLivro: boolean = false;
 

@@ -55,6 +55,7 @@
                       >
                         {{ livro.autoresIds }}
                       </td>
+
                       <td
                         class="text-center align-middle border border-primary"
                       >
@@ -87,6 +88,14 @@
                     </tr>
                   </tbody>
                 </table>
+                <span *ngIf="!livros?.length">
+                  <h5
+                    class="text-danger font-weight-bold text-left mb-3 text-center"
+                  >
+                    Nenhum livro cadastrado :c
+                  </h5>
+                </span>
+
                 <validacao-erro
                   *ngIf="livroAlteradoComSucesso"
                   type="success"

@@ -68,6 +68,13 @@
                     </tr>
                   </tbody>
                 </table>
+                <span *ngIf="!autores?.length">
+                  <h5
+                    class="text-danger font-weight-bold text-left mb-3 text-center"
+                  >
+                    Nenhum autor cadastrado :c
+                  </h5>
+                </span>
                 <validacao-erro
                   *ngIf="sucesso && botaoAtivo == true"
                   type="success"
