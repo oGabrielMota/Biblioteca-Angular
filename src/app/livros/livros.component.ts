@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { LivrosInput } from '../inputs/livros-input';
 import { AutoresOutput } from '../outputs/autores-output';
 import { LivrosOutput } from '../outputs/livros-output';
@@ -23,14 +22,12 @@ export class LivrosComponent implements OnInit {
   marcaLivroAlterarForm!: FormGroup;
 
   livroAlterar: number = -1;
-  autoresId: number = -1;
+  autoresIds: number = -1;
   nomeLivro: string = '';
 
   livroCadastradoComSucesso: boolean = false;
   livroExcluidaComSucesso: boolean = false;
   livroAlteradoComSucesso: boolean = false;
-
-  nenhumLivro: boolean = false;
 
   erroCadastrarLivro: boolean = false;
   erroExcluirLivro: boolean = false;
@@ -50,7 +47,7 @@ export class LivrosComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(4)],
       ],
-      autoresIds: ['', [Validators.required]],
+      autores: ['', [Validators.required]],
     });
     this.marcaLivroAlterarForm = this.formBuilder.group({
       titulo: ['', [Validators.required]],
@@ -58,7 +55,7 @@ export class LivrosComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength(1), Validators.maxLength(4)],
       ],
-      autoresIds: ['', [Validators.required]],
+      autores: ['', [Validators.required]],
     });
   }
 
@@ -74,7 +71,7 @@ export class LivrosComponent implements OnInit {
 
   buscaLivros(): void {
     this.livrosService
-      .buscaLivros(this.activatedRoute.snapshot.params?.[1])
+      .buscaLivros(this.activatedRoute.snapshot.params?.['id'])
       .subscribe((success) => {
         this.livros = success;
         console.log(this.livros);
@@ -85,39 +82,41 @@ export class LivrosComponent implements OnInit {
     this.livroCadastradoComSucesso = false;
     this.erroCadastrarLivro = false;
     const user = this.livroForm.getRawValue() as LivrosInput;
+    const autores = this.livroForm.get('autores')?.value;
+    const lista = autores.split(',');
+    user.autores = lista;
     this.livrosService.cadastraLivro(user).subscribe({
       next: (success) => {
         this.livroCadastradoComSucesso = true;
+        fechaModal('fechaModalCriacao');
+        this.buscaLivros();
       },
       error: (err) => {
         this.erroCadastrarLivro = true;
+        console.log(user);
       },
     });
   }
 
-  marcaAlterar(
-    id: number,
-    titulo: string,
-    anoLancamento: string,
-    autoresIds: number
-  ) {
+  marcaAlterar(id: number, titulo: string, anoLancamento: number, ids: number) {
     this.livroAlterar = id;
+    this.autoresIds = ids;
     this.marcaLivroAlterarForm.get('titulo')?.setValue(titulo);
     this.marcaLivroAlterarForm.get('anoLancamento')?.setValue(anoLancamento);
-    this.marcaLivroAlterarForm.get('autoresIds')?.setValue(autoresIds);
+    this.marcaLivroAlterarForm.get('autores')?.setValue(ids);
   }
 
   alterar() {
     this.resetaMensagensErro();
     this.resetaMensagensSucesso();
     if (this.marcaLivroAlterarForm) {
-      let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosInput;
+      let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosOutput;
 
       this.livrosService.alterar(this.livroAlterar, mudaLivro).subscribe({
         next: (data) => {
           this.livroAlteradoComSucesso = true;
-          this.buscaLivros();
           fechaModal('fechaModalAlteracao');
+          this.buscaLivros();
         },
         error: (err) => {
           this.erroAlterarLivro = true;
@@ -144,9 +143,9 @@ export class LivrosComponent implements OnInit {
       ?.getAttribute('data-id');
     this.livrosService.excluir(id).subscribe({
       next: (data) => {
-        this.buscaLivros();
         this.livroExcluidaComSucesso = true;
         fechaModal('botaoFecharRemoveLivro');
+        this.buscaLivros();
       },
       error: (err) => {
         fechaModal('botaoFecharRemoveLivro');

@@ -17,7 +17,7 @@ export class LivrosService {
     return this.http.get<LivrosOutput[]>(URL);
   }
 
-  cadastraLivro(user: LivrosInput): Observable<LivrosOutput> {
+  cadastraLivro(user: LivrosOutput): Observable<LivrosOutput> {
     return this.http.post<LivrosOutput>(URL, user);
   }
 
