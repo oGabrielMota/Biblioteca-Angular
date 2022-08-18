@@ -26,6 +26,12 @@ export class AutoresComponent implements OnInit {
   sucesso: boolean = false;
   botaoAtivo: boolean = true;
 
+  autorCadastradoComSucesso: boolean = false;
+  autorAlteradoComSucesso: boolean = false;
+
+  erroCadastrarAutor: boolean = false;
+  erroAlterarAutor: boolean = false;
+
   constructor(
     private autoresService: AutoresService,
     private activatedRoute: ActivatedRoute,
@@ -94,14 +100,26 @@ export class AutoresComponent implements OnInit {
         next: (data) => {
           this.buscaTodos();
           fechaModal('fechaModalAlteracao');
-          this.sucesso = true;
-          this.botaoAtivo = true;
+          this.autorAlteradoComSucesso = true;
         },
         error: (err) => {
-          this.erro = err;
-          this.botaoAtivo = true;
+          this.erroCadastrarAutor = true;
         },
       });
     }
+  }
+
+  cadastraAutor() {
+    const user = this.autoresForm.getRawValue() as AutoresInput;
+    this.autoresService.cadastraAutor(user).subscribe({
+      next: (success) => {
+        this.buscaTodos();
+        fechaModal('fechaModalCriacao');
+        this.autorCadastradoComSucesso = true;
+      },
+      error: (err) => {
+        this.erroCadastrarAutor = true;
+      },
+    });
   }
 }
