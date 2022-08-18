@@ -10,8 +10,8 @@ import { CriaAutoresComponent } from './cria-autores/cria-autores.component';
 import { CriaLivrosComponent } from './cria-livros/cria-livros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.component';
 import { MsgValidacaoComponent } from './msg-validacao/msg-validacao/msg-validacao.component';
+import { ValidacaoErroComponent } from './validacao-erro/validacao-erro.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { MsgValidacaoComponent } from './msg-validacao/msg-validacao/msg-validac
     AutoresComponent,
     CriaAutoresComponent,
     CriaLivrosComponent,
-    ValidacaoErroComponent,
     MsgValidacaoComponent,
+    ValidacaoErroComponent,
   ],
   imports: [
     BrowserModule,

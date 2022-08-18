@@ -30,6 +30,7 @@ export class CriaAutoresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.buscaTodos();
     this.autoresForm = this.formBuilder.group({
       nome: [
         '',
