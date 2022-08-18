@@ -16,26 +16,31 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [],
+    title: 'Bem vindo a Biblioteca',
   },
   {
     path: 'livros',
     component: LivrosComponent,
     canActivate: [],
+    title: 'Livros',
   },
   {
     path: 'autores',
     component: AutoresComponent,
     canActivate: [],
+    title: 'Autores',
   },
   {
     path: 'cria-autores',
     component: CriaAutoresComponent,
     canActivate: [],
+    title: 'Adicionar Autores',
   },
   {
     path: 'cria-livros',
     component: CriaLivrosComponent,
     canActivate: [],
+    title: 'Adicionar Livros',
   },
 ];
 

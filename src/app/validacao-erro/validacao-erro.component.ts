@@ -19,6 +19,6 @@ export class ValidacaoErroComponent implements OnInit {
     }
     setTimeout(function () {
       $('.alert').hide(1000);
-    }, 3000);
+    }, 2000);
   }
 }
