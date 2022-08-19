@@ -33,10 +33,10 @@
                 <table class="table">
                   <thead>
                     <tr class="text-center">
-                      <th>Titulo</th>
-                      <th>Ano Lançamento</th>
-                      <th>Autores</th>
-                      <th>Ações</th>
+                      <th>TÍTULO</th>
+                      <!-- <th>Ano Lançamento</th>
+                      <th>Autores</th> -->
+                      <th>AÇÕES</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -46,7 +46,7 @@
                       >
                         {{ livro.titulo }}
                       </td>
-                      <td
+                      <!-- <td
                         class="text-center align-middle border border-primary"
                       >
                         {{ livro.anoLancamento }}
@@ -54,37 +54,43 @@
                       <td
                         class="text-center align-middle border border-primary"
                       >
-                        {{ livro.autores }}
-                      </td>
-
+                        <div *ngFor="let autor of livro.autores">
+                          {{ autor.nome }}
+                        </div>
+                      </td> -->
                       <td
                         class="text-center align-middle border border-primary"
                       >
-                        <a
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#alteraLivro"
-                          (click)="
-                            marcaAlterar(
-                              livro.id,
-                              livro.titulo,
-                              livro.anoLancamento,
-                              autoresIds
-                            )
-                          "
-                        >
-                          <i
-                            class="fa fa-solid fa-pencil fa-lg text-primary"
-                          ></i>
-                        </a>
-                        <a
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#removerLivro"
-                          (click)="modalRemoveLivro(livro.id, livro.titulo)"
-                        >
-                          <i class="fa fa-solid fa-trash fa-lg text-danger"></i>
-                        </a>
+                        <div *ngFor="let autor of livro.autores">
+                          <a
+                            data-toggle="modal"
+                            data-target="#alteraLivro"
+                            class="btn btn-link"
+                            (click)="
+                              marcaAlterar(
+                                livro.id,
+                                livro.titulo,
+                                livro.anoLancamento,
+                                autor.id
+                              )
+                            "
+                          >
+                            <i
+                              class="fa fa-solid fa-pencil fa-lg text-primary"
+                            ></i>
+                          </a>
+
+                          <a
+                            class="btn btn-link"
+                            data-toggle="modal"
+                            data-target="#removerLivro"
+                            (click)="modalRemoveLivro(livro.id, livro.titulo)"
+                          >
+                            <i
+                              class="fa fa-solid fa-trash fa-lg text-danger"
+                            ></i>
+                          </a>
+                        </div>
                       </td>
                     </tr>
                   </tbody>

@@ -22,7 +22,7 @@ export class LivrosComponent implements OnInit {
   marcaLivroAlterarForm!: FormGroup;
 
   livroAlterar: number = -1;
-  autoresIds: number = -1;
+  autoresIds: number = 1;
   nomeLivro: string = '';
 
   livroCadastradoComSucesso: boolean = false;
@@ -74,7 +74,6 @@ export class LivrosComponent implements OnInit {
       .buscaLivros(this.activatedRoute.snapshot.params?.['id'])
       .subscribe((success) => {
         this.livros = success;
-        console.log(this.livros);
       });
   }
 
@@ -93,12 +92,12 @@ export class LivrosComponent implements OnInit {
       },
       error: (err) => {
         this.erroCadastrarLivro = true;
-        console.log(user);
       },
     });
   }
 
   marcaAlterar(id: number, titulo: string, anoLancamento: number, ids: number) {
+    let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosInput;
     this.livroAlterar = id;
     this.autoresIds = ids;
     this.marcaLivroAlterarForm.get('titulo')?.setValue(titulo);
@@ -110,15 +109,17 @@ export class LivrosComponent implements OnInit {
     this.resetaMensagensErro();
     this.resetaMensagensSucesso();
     if (this.marcaLivroAlterarForm) {
-      let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosOutput;
-
+      let mudaLivro = this.marcaLivroAlterarForm.getRawValue() as LivrosInput;
+      const autores = this.marcaLivroAlterarForm.get('autores')?.value;
+      const lista = autores.split(',');
+      mudaLivro.autores = lista;
       this.livrosService.alterar(this.livroAlterar, mudaLivro).subscribe({
         next: (data) => {
           this.livroAlteradoComSucesso = true;
           fechaModal('fechaModalAlteracao');
           this.buscaLivros();
         },
-        error: (err) => {
+        error: (erro) => {
           this.erroAlterarLivro = true;
         },
       });

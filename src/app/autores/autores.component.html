@@ -10,91 +10,82 @@
     <button [routerLink]="['']" class="btn m-5 voltar">
       <i class="fa fa-solid fa-angle-left mr-1"></i>
     </button>
-    <section>
-      <div class="container py-5">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-8 col-xl-6">
-            <div class="card rounded-3">
-              <table style="margin: 0 auto">
-                <tr>
-                  <td><h1>AUTORES</h1></td>
-                  <td>
-                    <button
-                      data-toggle="modal"
-                      data-target="#criaAutor"
-                      class="btn btn-primary add"
-                    >
-                      <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-              </table>
-              <div *ngIf="autoresForm" class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr class="text-center">
-                      <th>Autor</th>
-                      <th>Biografia</th>
-                      <th>AÇÕES</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let autor of autores">
-                      <td
-                        class="text-center align-middle border border-primary"
-                      >
-                        {{ autor.nome }}
-                      </td>
-                      <td
-                        class="text-center align-middle border border-primary"
-                      >
-                        {{ autor.biografia }}
-                      </td>
-                      <td
-                        class="text-center align-middle border border-primary"
-                      >
-                        <a
-                          class="btn btn-link"
-                          data-toggle="modal"
-                          data-target="#alteraAutor"
-                          (click)="
-                            marcaAlterar(autor.id, autor.nome, autor.biografia)
-                          "
-                        >
-                          <i
-                            class="fa fa-solid fa-pencil fa-lg text-primary"
-                          ></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <span *ngIf="!autores?.length">
-                  <h5
-                    class="text-danger font-weight-bold text-left mb-3 text-center"
-                  >
-                    Nenhum autor cadastrado :c
-                  </h5>
-                </span>
 
-                <validacao-erro
-                  *ngIf="autorAlteradoComSucesso"
-                  type="success"
-                  [top]="true"
-                  >Autor alterado com sucesso</validacao-erro
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <table style="margin: 0 auto">
+              <tr>
+                <td><h1>AUTORES</h1></td>
+                <td>
+                  <button
+                    data-toggle="modal"
+                    data-target="#criaAutor"
+                    class="btn btn-primary add"
+                  >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </table>
+            <div *ngIf="autoresForm" class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>AUTOR</th>
+                    <th>BIOGRAFIA</th>
+                    <th>EDITAR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let autor of autores">
+                    <td class="text-center align-middle border border-primary">
+                      {{ autor.nome }}
+                    </td>
+                    <td class="text-center align-middle border border-primary">
+                      {{ autor.biografia }}
+                    </td>
+                    <td class="text-center align-middle border border-primary">
+                      <a
+                        class="btn btn-link"
+                        data-toggle="modal"
+                        data-target="#alteraAutor"
+                        (click)="
+                          marcaAlterar(autor.id, autor.nome, autor.biografia)
+                        "
+                      >
+                        <i class="fa fa-solid fa-pencil fa-lg text-primary"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <span *ngIf="!autores?.length">
+                <h5
+                  class="text-danger font-weight-bold text-left mb-3 text-center"
                 >
-                <validacao-erro
-                  *ngIf="autorCadastradoComSucesso"
-                  type="success"
-                  [top]="true"
-                  >Autor criado com sucesso</validacao-erro
-                >
-              </div>
+                  Nenhum autor cadastrado :c
+                </h5>
+              </span>
+
+              <validacao-erro
+                *ngIf="autorAlteradoComSucesso"
+                type="success"
+                [top]="true"
+                >Autor alterado com sucesso</validacao-erro
+              >
+              <validacao-erro
+                *ngIf="autorCadastradoComSucesso"
+                type="success"
+                [top]="true"
+                >Autor criado com sucesso</validacao-erro
+              >
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </body>
 </html>
 
