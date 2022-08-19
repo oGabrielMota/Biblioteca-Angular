@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LivrosInput } from '../inputs/livros-input';
-import { AutoresOutput } from '../outputs/autores-output';
 import { LivrosOutput } from '../outputs/livros-output';
 import { LivrosService } from './livros.service';
 

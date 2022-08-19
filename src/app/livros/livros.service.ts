@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LivrosOutput } from '../outputs/livros-output';
 import { Observable } from 'rxjs';
-import { LivrosInput } from '../inputs/livros-input';
+import { Injectable } from '@angular/core';
 
 const URL = environment.URL_API + 'livros';
 
