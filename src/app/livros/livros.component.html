@@ -269,12 +269,7 @@
               placeholder="Ano Lançamento"
             />
             <msg-validacao
-              *ngIf="livroForm.get('anoLancamento')?.errors?.['minLength']"
-            >
-              O ano deve deve ter 4 caracteres!
-            </msg-validacao>
-            <msg-validacao
-              *ngIf="livroForm.get('anoLancamento')?.errors?.['maxLength']"
+              *ngIf="livroForm.get('anoLancamento')?.errors?.['maxlength']"
             >
               O ano deve deve ter 4 caracteres!
             </msg-validacao>

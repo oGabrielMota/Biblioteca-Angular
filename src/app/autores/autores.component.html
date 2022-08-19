@@ -195,6 +195,16 @@
               placeholder="Nome"
               autofocus
             />
+            <msg-validacao
+              *ngIf="autoresForm.get('nome')?.errors?.['required']"
+            >
+              Nome do Autor é obrigatorio!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="autoresForm.get('nome')?.errors?.['maxLength']"
+            >
+              Nome do Autor deve ter no máximo 100 caracteres!
+            </msg-validacao>
             <label class="mt-2" for="biografia">Biografia</label>
             <input
               id="biografia"
@@ -203,6 +213,16 @@
               class="form-control"
               placeholder="Biografia"
             />
+            <msg-validacao
+              *ngIf="autoresForm.get('biografia')?.errors?.['required']"
+            >
+              Biografia é obrigatoria!
+            </msg-validacao>
+            <msg-validacao
+              *ngIf="autoresForm.get('biografia')?.errors?.['maxlength']"
+            >
+              Biografia deve ter no máximo 1000 caracteres!
+            </msg-validacao>
           </div>
         </form>
       </div>
