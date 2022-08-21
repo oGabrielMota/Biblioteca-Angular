@@ -8,8 +8,8 @@ Para usar/testar a aplicação do mesmo necessita de alguns passos:
 <br>
 2 -> Clonar o projeto *Gabriel-Moreira-Mota-front-end* ;
 <br>
-3 -> Ainda na pasta do projeto, necessita do seguinte comando para a instalação do projeto:  *npm i* ;
+3 -> Dentro da pasta do projeto, necessita do seguinte comando para a instalação do projeto:  *npm i* ;
 <br>
-4 -> Para rodar o projeto, ainda no terminal, rodar o comando: *ng s -o* para que o projeto abra no seu navegador;
+4 -> Para rodar o projeto, dentro da pasta ainda no terminal, rodar o comando: *ng s -o* para que o projeto abra no seu navegador;
 <br>
 
